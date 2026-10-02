@@ -3,13 +3,12 @@ class Solution:
         result = []
 
         def backtrack(current, open_count, close_count):
-
-            # If we have used all n pairs
+            # We have used all parentheses
             if len(current) == 2 * n:
                 result.append(current)
                 return
 
-            # We can add '(' if we still have some left
+            # Add '(' if we still have some available
             if open_count < n:
                 backtrack(
                     current + "(",
@@ -17,7 +16,7 @@ class Solution:
                     close_count
                 )
 
-            # We can add ')' only if there is an unmatched '('
+            # Add ')' only if it won't make the string invalid
             if close_count < open_count:
                 backtrack(
                     current + ")",
